@@ -60,7 +60,7 @@ function Home(props) {
     setAnchorEl(null);
   };
 
-  const setUserData = () => {
+  const cleanUserData = () => {
     setUserName("");
     setUserAge("");
     setUserDescription("");
@@ -69,7 +69,6 @@ function Home(props) {
 
   useEffect(() => {
     fetchCurrentUser();
-    document.body.addEventListener("keydown", handleKeyDown);
   }, []);
 
   const fetchCurrentUser = () => {
@@ -91,10 +90,10 @@ function Home(props) {
       });
   };
 
-  const userLiked = () => {
+  const userVote = (vote) => {
     const body = {
       id: userId,
-      choice: true,
+      choice: vote,
     };
 
     axios
@@ -106,11 +105,11 @@ function Home(props) {
         setMatched(response.data.isMatch);
 
         if (response.data.isMatch === false) {
-          setUserData();
+          cleanUserData();
           fetchCurrentUser();
         } else if (response.data.isMatch === true) {
           setTimeout(() => {
-            setUserData();
+            cleanUserData();
             setMatched(false);
             fetchCurrentUser();
           }, 4800);
@@ -118,27 +117,6 @@ function Home(props) {
       })
       .catch((e) => {
         alert("ERRO AO DAR LIKE NO USUÁRIO");
-        console.log("erro: " + e);
-      });
-  };
-
-  const userDisliked = () => {
-    const body = {
-      id: userId,
-      choice: false,
-    };
-
-    axios
-      .post(
-        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/fabriciorodrigues/choose-person",
-        body
-      )
-      .then((response) => {
-        setUserData();
-        fetchCurrentUser();
-      })
-      .catch((e) => {
-        alert("ERRO AO DAR DISLIKE NO USUÁRIO");
         console.log("erro: " + e);
       });
   };
@@ -164,16 +142,6 @@ function Home(props) {
       setPage("home");
     }
   }
-
-  const handleKeyDown = (event) => {
-    if (event.key === "ArrowRight") {
-      userLiked();
-    }
-
-    if (event.key === "ArrowLeft") {
-      userDisliked();
-    }
-  };
 
   function renderPage() {
     if (currentPage === "home") {
@@ -265,7 +233,7 @@ function Home(props) {
                 size="large"
                 variant="outlined"
                 style={{ color: "#ff002f", borderRadius: 100 }}
-                onClick={() => userDisliked()}
+                onClick={() => userVote(false)}
               >
                 <Dislike />
               </Button>
@@ -274,8 +242,7 @@ function Home(props) {
                 size="large"
                 variant="outlined"
                 style={{ color: "#00ff6a", borderRadius: 100 }}
-                onClick={() => userLiked()}
-                onKeyDown={handleKeyDown}
+                onClick={() => userVote(true)}
               >
                 <Like />
               </Button>

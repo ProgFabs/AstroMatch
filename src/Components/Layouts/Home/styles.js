@@ -13,16 +13,19 @@ export const MainContainer = styled.div`
   border: ${({ theme }) => theme.border};
   box-shadow: 0 0 5px #0000000f;
 
-  @media (max-width: 320px) {
-    width: 320px;
-    height: 400px;
+  @media only screen and (min-width: 360px) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    left: 0;
+    top: 0;
     border: none;
-  }
-
-  @media (max-width: 360px) {
-    width: 350px;
-    height: 650px;
-    border: none;
+    border-radius: 0;
+    width: 375px;
+    height: 667px;
+    transform: none;
   }
 `;
 
@@ -42,14 +45,16 @@ export const Screen = styled.div`
   background-color: white;
   box-shadow: 0 0 5px #0000000f;
 
-  @media (max-width: 320px) {
-    width: 295px;
-    height: 325px;
-  }
-
-  @media (max-width: 360px) {
-    width: 325px;
-    height: 450px;
+  @media only screen and (min-width: 360px) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 360px;
+    height: 475px;
+    transform: none;
   }
 `;
 
@@ -57,14 +62,16 @@ export const Image = styled.img`
   width: 375px;
   height: 475px;
 
-  @media (max-width: 320px) {
-    width: 295px;
-    height: 375px;
-  }
-
-  @media (max-width: 360px) {
-    width: 325px;
-    height: 450px;
+  @media only screen and (min-width: 360px) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 350px;
+    height: 475px;
+    transform: none;
   }
 `;
 
@@ -81,12 +88,12 @@ export const ButtonsContainer = styled.div`
   border-radius: 50px;
   background-color: ${({ theme }) => theme.buttonsContainer};
 
-  @media (max-width: 320px) {
+  @media only screen and (min-width: 360px) {
+    position: absolute;
+    left: 15%;
     top: 90%;
-  }
-
-  @media (max-width: 360px) {
-    top: 92.5%;
+    padding: 10px;
+    transform: none;
   }
 `;
 
@@ -99,6 +106,13 @@ export const Box = styled.div`
   left: 65%;
   top: 10%;
   transform: translate(-50%, -50%);
+
+  @media only screen and (min-width: 360px) {
+    position: absolute;
+    left: 40%;
+    top: 7%;
+    transform: none;
+  }
 `;
 
 export const Header = styled.div``;
@@ -109,8 +123,15 @@ export const Logo = styled.p`
   font-family: "Satisfy", cursive;
   font-size: 20pt;
   left: 50%;
-  top: 1%;
+  top: 2%;
   transform: translate(-50%, -50%);
+
+  @media only screen and (min-width: 360px) {
+    position: absolute;
+    left: 35%;
+    top: 0%;
+    transform: none;
+  }
 `;
 
 export const Username = styled.p`
@@ -121,15 +142,17 @@ export const Username = styled.p`
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20pt;
   font-weight: bolder;
-  left: 50%;
-  top: 70%;
+  left: 51.5%;
+  top: 65%;
   transform: translate(-50%, -50%);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
 
-  @media (max-width: 320px) {
+  @media only screen and (min-width: 360px) {
+    position: absolute;
     font-size: 18pt;
-    top: 65%;
+    top: 70%;
+    left: 50%;
   }
 `;
 

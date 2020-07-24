@@ -3,8 +3,6 @@ import AppsColumn from "./AppsColumn";
 
 import Clock from "react-live-clock";
 
-import Button from "@material-ui/core/Button";
-
 import Signal from "@material-ui/icons/SignalCellular4Bar";
 import Wifi from "@material-ui/icons/SignalWifi4Bar";
 import Battery from "@material-ui/icons/BatteryFull";
@@ -14,7 +12,7 @@ import {
   Screen,
   ButtonsContainer,
   Header,
-  Hole,
+  UpperBar,
 } from "./styles";
 
 import { ThemeProvider } from "styled-components";
@@ -34,7 +32,7 @@ function CellphoneHome(props) {
     <ThemeProvider theme={currentTheme === "light" ? lightTheme : darkTheme}>
       <MainContainer>
         <Header>
-          <Hole></Hole>
+          <UpperBar></UpperBar>
           <div style={{ position: "fixed", left: 40 }}>
             <Clock format="H:mm" ticking={true} />
           </div>
@@ -46,8 +44,6 @@ function CellphoneHome(props) {
               display: "flex",
               justifyContent: "space-between",
               position: "fixed",
-              right: 15,
-              width: 80,
             }}
           >
             <div>

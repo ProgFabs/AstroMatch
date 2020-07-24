@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { CircularProgress } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import { ThemeProvider } from "styled-components";
@@ -14,18 +13,18 @@ import {
   Logo,
 } from "./styles";
 
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Back from "@material-ui/icons/ArrowBackIos";
-import Clear from "@material-ui/icons/Clear";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-
 import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+
+import BackIcon from "@material-ui/icons/ArrowBackIos";
+import ClearIcon from "@material-ui/icons/Clear";
 
 function UsersList(props) {
   const { changePage, currentTheme } = props;
@@ -56,7 +55,7 @@ function UsersList(props) {
         .put(
           "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/fabriciorodrigues/clear"
         )
-        .then((response) => {
+        .then(() => {
           getMatches();
         })
         .catch((e) => {
@@ -78,7 +77,7 @@ function UsersList(props) {
               color="secondary"
               onClick={() => cleanMatches()}
             >
-              <Clear />
+              <ClearIcon />
             </Button>
             <Button
               style={{ width: 30, height: 40 }}
@@ -87,7 +86,7 @@ function UsersList(props) {
               onClick={() => changePage("usersList")}
             >
               {" "}
-              <Back style={{ position: "fixed", left: 280 }} />
+              <BackIcon style={{ position: "fixed", left: 280 }} />
             </Button>
           </Box>
         </Header>
